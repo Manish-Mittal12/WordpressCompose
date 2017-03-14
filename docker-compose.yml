@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+
+   mywordpress:
+     depends_on:
+       - wp-mysql
+     image: manishmittal0788/wordpress
+     volumes:
+      - /root/Test/wordpress:/var/www/html
+     ports:
+       - "8001:80"
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: wp-mysql
+       WORDPRESS_DB_PASSWORD: wordpress
+       WORDPRESS_DB_USER: root
+    
+    
+   wp-mysql:
+     image: mysql:5.7
+     volumes:
+      - /root/Test/SQL:/var/lib/mysql
+     environment:
+       MYSQL_ROOT_PASSWORD: wordpress
+       MYSQL_DATABASE: wordpress
+      
+ 
+volumes:
+    db_data:
