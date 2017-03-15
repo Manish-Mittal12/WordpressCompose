@@ -15,9 +15,10 @@ VOLUME /var/www/html
 WORKDIR /var/www/html
 RUN chown -R root.root /var/www/html
 
+
 RUN mkdir -p /usr/src
 ADD * /usr/src/
-RUN chown -R nobody.nobody /usr/src/wordpress
+RUN chown -R root.root /usr/src/wordpress
 
 # Configure Wordpress to connect to local DB
 ADD wp-config.php /app/wp-config.php
