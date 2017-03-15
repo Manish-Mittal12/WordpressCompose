@@ -24,7 +24,7 @@ ADD wp-config.php /app/wp-config.php
 
 # WP config
 COPY wp-config.php /usr/src/wordpress
-RUN chown nobody.nobody /usr/src/wordpress/wp-config.php && chmod 640 /usr/src/wordpress/wp-config.php
+RUN chown root.root /usr/src/wordpress/wp-config.php && chmod 640 /usr/src/wordpress/wp-config.php
 
 # Add scripts and make them executable.
 COPY create_mysql_admin_user.sh /create_mysql_admin_user.sh

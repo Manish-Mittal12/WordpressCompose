@@ -1,11 +1,7 @@
 tutum-docker-wordpress
 ======================
 
-**This image will be deprecated soon. Please use the docker official image:** https://hub.docker.com/_/wordpress/
-
-[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
-
-Out-of-the-box Wordpress docker image
+the image will be used for deploying dwordpress acroos the swarm with the help of version 3 compose.yml
 
 
 Usage
@@ -37,5 +33,4 @@ You can now start configuring your Wordpress container!
 More information
 ----------------
 
-For details on how to access the bundled MySQL Server, set specific passwords or disable .htaccess,
-please visit the [tutum/lamp repository on github](https://github.com/tutumcloud/tutum-docker-lamp)
+contact manish.mittal@ecs.co.uk
