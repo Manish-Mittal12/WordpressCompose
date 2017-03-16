@@ -40,8 +40,9 @@ VOLUME ["/var/lib/mysql", "/var/www/html"]
 # Entrypoint to copy wp-content
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+#ENTRYPOINT ["entrypoint.sh"]
 
 EXPOSE 8001 80 3306 443
 
-CMD ["/run.sh"]
+#CMD ["/run.sh"]
+CMD ["Docker stack deploy --compose-file docker-compose.yml wordpress"]
