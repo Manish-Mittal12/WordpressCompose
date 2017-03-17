@@ -11,17 +11,14 @@ ENV DB_PASS wordpress
 ENV ROOT_PATH /
 
 # wp-content volume
-VOLUME /var/www/html
-WORKDIR /var/www/html
+#VOLUME /var/www/html
+VOLUME ["/var/lib/mysql", "/var/www/html"]
 RUN chown -R root.root /var/www/html
 
 
 RUN mkdir -p /usr/src
 ADD * /usr/src/
 RUN chown -R root.root /usr/src/wordpress
-
-# Configure Wordpress to connect to local DB
-ADD wp-config.php /app/wp-config.php
 
 # WP config
 COPY wp-config.php /usr/src/wordpress
@@ -33,16 +30,13 @@ COPY create_db.sh /create_db.sh
 COPY run.sh /run.sh
 RUN chmod +x /*.sh
 
-# Add volumes for MySQL and the application.
-VOLUME ["/app/wp-content"]
-VOLUME ["/var/lib/mysql", "/var/www/html"]
-
 # Entrypoint to copy wp-content
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT ["entrypoint.sh"]
 
 EXPOSE 8001 80 3306 443
+WORKDIR /var/www/html
 
 #CMD ["/run.sh"]
 CMD ["Docker stack deploy --compose-file docker-compose.yml wordpress"]
